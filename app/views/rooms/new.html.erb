@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="text-center">New Room</h1>
+
+  <form action="/rooms" method="post">
+    <label for="room_name">Name</label>
+    <input type="text" name="room[name]" id="room_name" class="form-control" required>
+
+    <button type="submit" class="btn btn-primary mt-2">Create Room</button>
+  </form>
+
+  <a href="/rooms" class="btn btn-link mt-3">Back to rooms</a>
+</div>
