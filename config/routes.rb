@@ -1,13 +1,12 @@
+# config/routes.rb
 Rails.application.routes.draw do
-  root 'rooms#index'
-  # Or 'tasks#index', depending on your intention
-  resources :rooms  # Keep this if you need room-related routes
-  resources :tasks  # Add this if you also want to manage tasks
+  root 'categories#index'  # Ensure the root path is set to categories#index
 
-  resources :tasks do
-    member do
-      patch :complete
+  resources :categories do
+    resources :tasks, only: [:create, :destroy] do
+      member do
+        patch :complete
+      end
     end
   end
-
 end

@@ -1,0 +1,34 @@
+<h1>Create New Category</h1>
+
+<%= form_with(model: @category, local: true) do |form| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+      <ul>
+        <% @category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "Category Name" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <h2>Add Rooms</h2>
+
+  <%= form.fields_for :rooms do |room_form| %>
+    <div class="field">
+      <%= room_form.label :name, "Room Name" %>
+      <%= room_form.text_field :name %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', categories_path %>
